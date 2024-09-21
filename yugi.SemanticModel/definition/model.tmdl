@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: de-DE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Database-Monsters"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.135.7627.0 (24.08)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Database-Monsters
+ref table DateTableTemplate_4e947999-e8a0-49ce-82d9-dc03299fa6f9
+
+ref cultureInfo en-US
+

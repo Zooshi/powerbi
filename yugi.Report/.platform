@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "yugi"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8948e335-10df-4a47-b1aa-c3f6c19193ad"
+  }
+}

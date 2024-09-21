@@ -1,0 +1,65 @@
+table Database-Monsters
+	lineageTag: 22b151a0-0912-4120-9f6a-3f7fb47895ae
+
+	column Column1
+		dataType: string
+		lineageTag: ca38d6a2-4a38-48f2-8023-637357c8c4f8
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column2
+		dataType: string
+		lineageTag: 422204a0-c5a1-41c7-a10f-fef3fe12debe
+		summarizeBy: none
+		sourceColumn: Column2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column3
+		dataType: string
+		lineageTag: 504c1d82-288c-4053-98bc-efcf68128503
+		summarizeBy: none
+		sourceColumn: Column3
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column4
+		dataType: int64
+		formatString: 0
+		lineageTag: 25a07243-9d4e-4c8c-b2d4-d2dbdd21b352
+		summarizeBy: sum
+		sourceColumn: Column4
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column5
+		dataType: int64
+		formatString: 0
+		lineageTag: 08fc31cc-3b40-42e3-9a6f-02ed0eeb8037
+		summarizeBy: sum
+		sourceColumn: Column5
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column6
+		dataType: int64
+		formatString: 0
+		lineageTag: a9c35fb4-02da-4b68-9b01-37f6c1e977fe
+		summarizeBy: sum
+		sourceColumn: Column6
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Database-Monsters = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://raw.githubusercontent.com/a-tokyo/yugioh-game/refs/heads/master/Database-Monsters.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", Int64.Type}, {"Column5", Int64.Type}, {"Column6", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

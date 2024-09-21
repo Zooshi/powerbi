@@ -1,0 +1,85 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.1.0/schema.json",
+  "name": "17906e17576332a3dc52",
+  "position": {
+    "x": 16,
+    "y": 0,
+    "z": 0,
+    "height": 688,
+    "width": 928,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Database-Monsters"
+                    }
+                  },
+                  "Property": "Column2"
+                }
+              },
+              "queryRef": "Database-Monsters.Column2",
+              "nativeQueryRef": "Column2",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Database-Monsters"
+                        }
+                      },
+                      "Property": "Column4"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Database-Monsters.Column4)",
+              "nativeQueryRef": "Sum of Column4"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Database-Monsters"
+                      }
+                    },
+                    "Property": "Column4"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
