@@ -1,0 +1,129 @@
+table pokemon
+	lineageTag: 133e0132-c025-41cf-b2ce-ba61bc5ac00a
+
+	column #
+		dataType: int64
+		formatString: 0
+		lineageTag: 46feab73-6519-4600-853c-f970d4686cff
+		summarizeBy: sum
+		sourceColumn: #
+
+		annotation SummarizationSetBy = Automatic
+
+	column Attack
+		dataType: int64
+		formatString: 0
+		lineageTag: fb5b54f6-5c48-4723-9f11-2d902a476618
+		summarizeBy: sum
+		sourceColumn: Attack
+
+		annotation SummarizationSetBy = Automatic
+
+	column Defense
+		dataType: int64
+		formatString: 0
+		lineageTag: 87e9ec36-1f36-4462-8cde-616942896a23
+		summarizeBy: sum
+		sourceColumn: Defense
+
+		annotation SummarizationSetBy = Automatic
+
+	column Generation
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f1b57cd-62de-446e-bca6-13377e494fcb
+		summarizeBy: sum
+		sourceColumn: Generation
+
+		annotation SummarizationSetBy = Automatic
+
+	column HP
+		dataType: int64
+		formatString: 0
+		lineageTag: ea68ee1c-eed8-4702-88a6-381956e219d1
+		summarizeBy: sum
+		sourceColumn: HP
+
+		annotation SummarizationSetBy = Automatic
+
+	column Legendary
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cce2e15c-1d0d-469e-a226-3ca565dbf6ac
+		summarizeBy: none
+		sourceColumn: Legendary
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: e6c282cf-1a12-4b00-a9a1-7c1a2a503499
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sp. Atk'
+		dataType: int64
+		formatString: 0
+		lineageTag: a159cbe4-4256-47cc-9701-6d145548d6a9
+		summarizeBy: sum
+		sourceColumn: Sp. Atk
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sp. Def'
+		dataType: int64
+		formatString: 0
+		lineageTag: d6626d1e-90ce-4159-ab84-e6efebce76dd
+		summarizeBy: sum
+		sourceColumn: Sp. Def
+
+		annotation SummarizationSetBy = Automatic
+
+	column Speed
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e6014eb-3550-41dc-bf01-893f003b05b5
+		summarizeBy: sum
+		sourceColumn: Speed
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total
+		dataType: int64
+		formatString: 0
+		lineageTag: adf6c2cc-c9ef-439f-b5d5-1e898e878c52
+		summarizeBy: sum
+		sourceColumn: Total
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type 1'
+		dataType: string
+		lineageTag: 86d7ca98-cdf5-4bb7-b6f6-48fb3dab74e9
+		summarizeBy: none
+		sourceColumn: Type 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Type 2'
+		dataType: string
+		lineageTag: 19652578-b859-4358-96fb-e8566e7fa083
+		summarizeBy: none
+		sourceColumn: Type 2
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pokemon-0e17ffa5-6299-4519-8275-278c4d9b50a4 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(Web.Contents("https://gist.githubusercontent.com/armgilles/194bcff35001e7eb53a2a8b441e8b2c6/raw/92200bc0a673d5ce2110aaad4544ed6c4010f687/pokemon.csv"),[Delimiter=",", Columns=13, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"#", Int64.Type}, {"Name", type text}, {"Type 1", type text}, {"Type 2", type text}, {"Total", Int64.Type}, {"HP", Int64.Type}, {"Attack", Int64.Type}, {"Defense", Int64.Type}, {"Sp. Atk", Int64.Type}, {"Sp. Def", Int64.Type}, {"Speed", Int64.Type}, {"Generation", Int64.Type}, {"Legendary", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
