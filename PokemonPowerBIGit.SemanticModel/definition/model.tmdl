@@ -1,0 +1,21 @@
+model Model
+	culture: de-DE
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: de-DE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["pokemon"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.135.7627.0 (24.08)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_8ec97788-7ae9-43b0-8eb5-35ab7fe129c9
+ref table pokemon
+
+ref cultureInfo de-DE
+
